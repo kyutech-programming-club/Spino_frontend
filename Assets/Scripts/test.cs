@@ -12,7 +12,7 @@ public class test : MonoBehaviour
     void Start()
     {
         rd = GetComponent<Rigidbody>();
-        Vector3 force = new Vector3(0.0f, 0.0f, 100.0f);    // 力を設定
+        Vector3 force = new Vector3(0.0f, 0.0f, 100f);    // 力を設定
         rd.AddForce(force);  // 力を加える
         originalRotation = transform.rotation;
     }
@@ -77,8 +77,8 @@ public class test : MonoBehaviour
         }
         if ((Input.GetKey(KeyCode.Z)))
         {
-            moveDirection += new Vector3(0f, 0.1f, 0f);
-            Invoke("Stop", 2);
+            moveDirection += new Vector3(0f, 0f, 0.1f);
+            // Invoke("Stop", 2);
         }
         if (Input.GetKeyDown(KeyCode.X))
         {
