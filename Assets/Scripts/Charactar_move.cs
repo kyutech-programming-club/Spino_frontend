@@ -6,7 +6,6 @@ public class Charactar_move : MonoBehaviour
 {
     public GameObject Cloud;
     public int i;
-    public string text;
     private List<string> true_musical_scale_List = new List<string>();
     private GameObject Up;
     private GameObject Down;
@@ -14,7 +13,7 @@ public class Charactar_move : MonoBehaviour
     private GameObject Right;
     private float speed = 5f;
     private float SpeedTime;
-    private float span;
+    public float span;
     private int m;
     private GameObject a;
     private Vector3 target;
@@ -24,14 +23,21 @@ public class Charactar_move : MonoBehaviour
     public float duration = 5f;
     public bool canMove;
     private float delayspan;
+    private int j;
+    private Rigidbody rd;
+    public BallShot ballShot;
+    
     private int k;
     // Start is called before the first frame update
     void Start()
     {
+        rd = GetComponent<Rigidbody>();
+        j =0;
         canMove = true;
         lineRenderer = gameObject.GetComponent<LineRenderer>();
         i = 0;
         true_musical_scale_List = musical_scales_List.true_musical_scales;
+        Debug.Log(true_musical_scale_List.ToString());
         m = 0;
         for(int k = 0; k<=true_musical_scale_List.Count-1;++k)
         {
@@ -40,39 +46,37 @@ public class Charactar_move : MonoBehaviour
     }
 void Update()
 {
-  
-    span += Time.deltaTime;
 
-    if (Input.GetKeyDown(KeyCode.A))
+    if(j>= 10)
     {
-        Check(text);
+    canMove = false;
+    rd.velocity = Vector3.zero;
+    ballShot.Death();
+    j =0;
     }
     
-
-    delayspan += Time.deltaTime;
     if(canMove == true)
     {
      if(SpeedTime >= 0)
    {
-      SpeedTime -= Time.deltaTime;
+          SpeedTime -= Time.deltaTime;
         if (currentSegment < lineRenderer.positionCount - 1)
         {
+            
             Vector3 startPosition = lineRenderer.GetPosition(currentSegment);
             Vector3 endPosition = lineRenderer.GetPosition(currentSegment + 1);
             transform.position = Vector3.Lerp(startPosition, endPosition, t);
-            t += Time.deltaTime;
+            t += Time.deltaTime*50/27;
 
             if (t >= 1f)
             {
                 t = 0f;
                 currentSegment++;
-                canMove = false;
             }
         }
         else
-        {
-            
-            currentSegment = 0; 
+        { 
+         transform.position = lineRenderer.GetPosition(currentSegment);
         }
    }
     }
@@ -83,7 +87,6 @@ void Update()
     {
         string true_musical_scale = true_musical_scale_List[i];
         i += 1;
-        Instancewall(i + 1);
         if (true_musical_scale_List[i] != "休符")
         {
             List<string> musical_scale_types = new List<string>() { "ラ4", "シ4", "ド5", "レ5", "ミ5", "ファ5", "ソ5", "ラ5", "シ5", "ド6", "レ6" };
@@ -91,22 +94,24 @@ void Update()
             {
                 if (musical_scale == musical_scale_types[0] || musical_scale == musical_scale_types[1] || musical_scale == musical_scale_types[10])
                 {
-                    speed += 0.3f;
+                    SpeedTime += span;
                 }
                 else
                 {
-                  canMove = false;
+                    j+=1;
+                //   canMove = false;
                 }
             }
             else if (musical_scale_types[10] == true_musical_scale)
             {
                 if (musical_scale == musical_scale_types[0] || musical_scale == musical_scale_types[9] || musical_scale == musical_scale_types[10])
                 {
-                    speed += 0.3f;
+                    SpeedTime += span;
                 }
                 else
                 {
-                   canMove = false;
+                //    canMove = false;
+                  j+=1;
                 }
             }
             else
@@ -117,7 +122,7 @@ void Update()
                     {
                         if (musical_scale == musical_scale_types[j] || musical_scale == musical_scale_types[j - 1] || musical_scale == musical_scale_types[j + 1])
                         {
-                            speed += 0.3f;
+                             SpeedTime += span;
                             if (true_musical_scale == "ド5")
                             {
                              
@@ -158,13 +163,14 @@ void Update()
                             {
 
                             }
-                            speed += 0.3f;
+                          
                             Debug.Log("seikou");
                             break;
                         }
                         else
                         {
-                           canMove = false;
+                              j+=1;
+                        //    canMove = false;
                             break;
                         }
                     }
@@ -175,11 +181,12 @@ void Update()
         {
             if (musical_scale == "休符")
             {
+                SpeedTime += span;
                 Debug.Log("休符成功");
             }
             else
             {
-            canMove = false;
+                  j+=1;
             }
         }
 
@@ -264,22 +271,32 @@ void Update()
         else if (true_musical_scale == "ラ4")
         {
             lineRenderer.SetPosition(k, target + new Vector3(0, 0, 40));
+              target = target + new Vector3(0, 0, 40);
             Destroy(a);
         }
         else if (true_musical_scale == "シ4")
         {
             lineRenderer.SetPosition(k, target + new Vector3(0, 0, 40));
+              target = target + new Vector3(0, 0, 40);
               Destroy(a);
         }
         else if (true_musical_scale == "レ6")
         {
             lineRenderer.SetPosition(k, target + new Vector3(0, 0, 40));
+              target = target + new Vector3(0, 0, 40);
               Destroy(a);
         }
         else if(true_musical_scale == "休符")
         {
             lineRenderer.SetPosition(k, target + new Vector3(0, 0,40));
+              target = target + new Vector3(0, 0, 40);
             Destroy(a);
+        }
+        else
+        {
+         lineRenderer.SetPosition(k, target + new Vector3(0, 0,40));
+           target = target + new Vector3(0, 0, 40);
+          Destroy(a);
         }
     }
 }
