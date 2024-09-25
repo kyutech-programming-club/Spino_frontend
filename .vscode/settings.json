@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Spino_frontend.sln"
+    "dotnet.defaultSolution": "Hackathon_Spino.sln"
 }
