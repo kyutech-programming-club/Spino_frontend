@@ -73,6 +73,7 @@ public class ConnectionTest : MonoBehaviour
         List<string> strList = testData.key.Split(',').ToList();
         Debug.Log("Count: " + strList.Count);
 
+
         // ループの開始値を修正
         for (int i = k; i <= strList.Count - 1; ++i)
         {
@@ -94,5 +95,4 @@ public class ConnectionTest : MonoBehaviour
 
     }
 }
-
-
+}
