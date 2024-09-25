@@ -9,6 +9,5 @@ public class cloudinstance : MonoBehaviour
     {
 
     }
-
    
 }

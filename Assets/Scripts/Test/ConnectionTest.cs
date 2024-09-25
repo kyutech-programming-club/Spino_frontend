@@ -3,9 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using PythonConnection;
 using UnityEngine;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
 
 public class ConnectionTest : MonoBehaviour
 {
+
+    public Charactar_move charactar_move;
     //Pythonへ送信するデータ形式
     [Serializable]
     private class SendingData
@@ -62,10 +68,11 @@ public class ConnectionTest : MonoBehaviour
     {
         //DataClass型で渡されてしまうため、明示的に型変換
         TestDataClass testData = data as TestDataClass;
-
-        //受け取り結果表示
-        Debug.Log("testValue0: " + testData.testValue0);
-        Debug.Log("testValue1: " + testData.testValue1);
+         List<string> strList =  testData.key.Split(',').ToList();
+         for(int i = 0;i <= strList.Count; i++)    
+         {
+         charactar_move.Check(strList[i]);
+         }
     }
 }
 

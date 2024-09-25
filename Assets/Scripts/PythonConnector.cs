@@ -261,11 +261,10 @@ namespace PythonConnection
             //separate data_type and data JSON
             Message[] messages = Separate(data);
 
+
             foreach (Message message in messages)
             {
-                //to Decoder
-                GetComponent<DataDecoder>()
-                    .DecodeAndReport(message.dataType, message.dataJson);
+                GetComponent<DataDecoder>().DecodeAndReport(message.dataType, message.dataJson);
             }
         }
 
