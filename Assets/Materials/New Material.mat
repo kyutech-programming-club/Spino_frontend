@@ -75,17 +75,17 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _Intensity: 0.315
+    - _Intensity: 0.025
     - _LightStepScale: 1
-    - _Loop: 18
+    - _Loop: 26
     - _LoopLight: 36
     - _Metallic: 0
     - _Mode: 0
-    - _NoiseScale: 19.2
+    - _NoiseScale: 21.9
     - _OcclusionStrength: 1
     - _OpacityLight: 27.5
     - _Parallax: 0.02
-    - _Radius: 1.43
+    - _Radius: 0.85
     - _Scale: 5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
