@@ -6,8 +6,7 @@ using UnityEngine;
 [Serializable]
 public class TestDataClass : DataClass
 {
-    public int testValue0;
 
     [SerializeField]
-    public string testValue1;
+    public string key;
 }

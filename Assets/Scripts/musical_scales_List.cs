@@ -4,7 +4,7 @@ using UnityEngine;
 public static class  musical_scales_List
 {
 public static  List<string> true_musical_scales = new List<string>(){
-    
+  "休符",
   "ファ5",
   "ファ5",
   "ミ5",
