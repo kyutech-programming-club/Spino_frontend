@@ -83,14 +83,14 @@ public class test : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X))
         {
             // オブジェクトを左に傾ける
-            transform.Rotate(0, 0, 45f);
+            transform.Rotate(45f, 0, 0);
             moveDirection += new Vector3(-0.05f, 0f, 0f);
             Invoke("Flat", 2);
         }
         if (Input.GetKeyDown(KeyCode.C))
         {
             // オブジェクトを右に傾ける
-            transform.Rotate(0, 0, -45f);
+            transform.Rotate(-45, 0, 0f);
             moveDirection += new Vector3(0.05f, 0f, 0f);
             Invoke("Flat", 2);
         }
