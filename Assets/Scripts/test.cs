@@ -96,7 +96,7 @@ public class test : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.V))
         {
-            // オブジェクトを右に傾ける
+            // オブジェクトを半回転
             transform.Rotate(0, 0, 180f);
             Invoke("Flat", 2);
         }
